@@ -1,14 +1,2 @@
 echo cd audios
-
-echo $ffmpeg='.\.ffmpeg\ffmpeg-6.0-full_build\bin\ffmpeg.exe'
-echo for file in ./*; do
-echo 	$ffmpeg -i "$file" -ar 16000 -ac 1 -acodec pcm_s16le .wav/"$file".wav
-echo done
-
-echo cd .wav
-echo for file in ./*; do
-echo 	if [[ "$file" == *wav ]]; then
-echo 		New-Item "..\..\transcripciones\$file.txt"
-echo 		python transcriptor.py "$file"
-echo 	fi
-echo done
+echo cd audios
