@@ -1,11 +1,4 @@
-$ffmpeg='.\.ffmpeg\ffmpeg-6.0-full_build\bin\ffmpeg.exe'
-Get-ChildItem –Path ".\audios"
-Foreach-Object {
-	.\.ffmpeg\ffmpeg-6.0-full_build\bin\ffmpeg.exe -i "$_.FullName" -ar 16000 -ac 1 -acodec pcm_s16le .wav/"$_.FullName".wav
-}
-cd .wav
-Get-ChildItem –Path ".\audios\.wav" -Filter *.wav
-Foreach-Object {
-	New-Item "..\..\transcripciones\$file.txt"
-	python transcriptor.py "$_.FullName"
+foreach ($file in Get-ChildItem –Path ".\audios")
+{
+  Write-Host $file
 }
