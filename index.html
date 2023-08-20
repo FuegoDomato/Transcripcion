@@ -1,6 +1,7 @@
-foreach ($file in Get-ChildItem –Path ".\audios")
-	echo $file
+foreach ($file in Get-ChildItem –Path ".\audios") {
+	.\.ffmpeg\ffmpeg-6.0-full_build\bin\ffmpeg.exe -i "$file" -ar 16000 -ac 1 -acodec pcm_s16le .wav/"$file".wav
 }
-foreach ($file in Get-ChildItem –Path ".\audios\.wav" -Filter *.wav)
-	echo $file
+foreach ($file in Get-ChildItem –Path ".\audios\.wav" -Filter *.wav) {
+	New-Item "\transcripciones\$file.txt"
+	python .transcriptor.py "$file"
 }
