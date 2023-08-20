@@ -1,3 +1,7 @@
-for file in 'hola mundo'; do
-	echo "$file"
-done
+Get-ChildItem –Path "./"
+
+Foreach-Object {
+
+	echo $_.FullName
+
+}
