@@ -1,1 +1,15 @@
-echo 'Hola Mundo'
+#!/bin/bash
+
+cd audios
+$ffmpeg='.\.ffmpeg\ffmpeg-6.0-full_build\bin\ffmpeg.exe'
+for file in ./*; do
+	$ffmpeg -i "$file" -ar 16000 -ac 1 -acodec pcm_s16le .wav/"$file".wav
+done
+
+cd .wav
+for file in ./*; do
+	if [[ "$file" == *wav ]]; then
+		New-Item "..\..\transcripciones\$file.txt"
+		python transcriptor.py "$file"
+	fi
+done
