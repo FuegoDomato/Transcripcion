@@ -1,3 +1,5 @@
+pip install vosk
+
 $guion='_'
 foreach ($file in Get-ChildItem –Path ".\audios") {
 	.\audios\.ffmpeg\ffmpeg-6.0-full_build\bin\ffmpeg.exe -i "$file" -ar 16000 -ac 1 -acodec pcm_s16le .\audios\.wav\"$file".wav
