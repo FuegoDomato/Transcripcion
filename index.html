@@ -4,6 +4,7 @@ foreach ($file in Get-ChildItem –Path ".\audios") {
 }
 foreach ($file in Get-ChildItem –Path ".\audios\.wav" -Filter *.wav) {
 	foreach ($model in Get-ChildItem –Path ".\" -Filter vosk-model*) {
+		echo 'Hola Mundo'
 		New-Item .\transcripciones\$file$guion$model.txt
 		python .transcriptor.py $file $model
 	}
