@@ -1,7 +1,6 @@
 $guion='_'
 foreach ($file in Get-ChildItem –Path ".\audios") {
 	.\audios\.ffmpeg\ffmpeg-6.0-full_build\bin\ffmpeg.exe -i .\audio\"$file" -ar 16000 -ac 1 -acodec pcm_s16le .\audios\.wav\"$file".wav
-	sleep 15
 }
 foreach ($file in Get-ChildItem –Path ".\audios\.wav" -Filter *.wav) {
 	foreach ($model in Get-ChildItem –Path ".\" -Filter vosk-model*) {
@@ -9,3 +8,4 @@ foreach ($file in Get-ChildItem –Path ".\audios\.wav" -Filter *.wav) {
 		python .transcriptor.py $file $model
 	}
 }
+sleep 15
