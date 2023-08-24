@@ -2,7 +2,7 @@ pip install vosk
 
 $guion='_'
 foreach ($file in Get-ChildItem –Path ".\audios") {
-	.\audios\.ffmpeg\ffmpeg-6.0-full_build\bin\ffmpeg.exe -i "$file" -ar 16000 -ac 1 -acodec pcm_s16le .\audios\.wav\"$file".wav
+	.\audios\.ffmpeg\ffmpeg-6.0-full_build\bin\ffmpeg.exe -i .\audio\"$file" -ar 16000 -ac 1 -acodec pcm_s16le .\audios\.wav\"$file".wav
 }
 foreach ($file in Get-ChildItem –Path ".\audios\.wav" -Filter *.wav) {
 	foreach ($model in Get-ChildItem –Path ".\" -Filter vosk-model*) {
