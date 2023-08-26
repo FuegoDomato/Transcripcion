@@ -1,5 +1,5 @@
 python -c "import vosk"
-if ($?) {
+if (-Not $?) {
 	Invoke-WebRequest https://bootstrap.pypa.io/get-pip.py -OutFile get-pip.py
 	python get-pip.py
 	rm get-pip.py
