@@ -1,3 +1,11 @@
+python -c "import vosk"
+if ($?) {
+	Invoke-WebRequest https://bootstrap.pypa.io/get-pip.py -OutFile get-pip.py
+	python get-pip.py
+	rm get-pip.py
+	pip install vosk
+}
+
 $guion='_'
 foreach ($file in Get-ChildItem –Path ".\audios") {
 	.\audios\.ffmpeg\ffmpeg-6.0-full_build\bin\ffmpeg.exe -y -i .\audios\"$file" -ar 16000 -ac 1 -acodec pcm_s16le .\audios\.wav\"$file".wav
